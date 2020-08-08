@@ -1,7 +1,9 @@
 # 100-days-of-code
 
-## Coming soon...
+## Day 0:
 
-## Day 00:
+<!--
+Is this hidden?
+-->
 
-Setting up...
+Testing
