@@ -22,12 +22,6 @@ Code for 100 days!
 
 A more thoughtful plan is coming, but for now, I'm jumping in the deep end.
 
-Code test:
-
-const testing = function () {
-  console.log("eh?")
-}
-
 ***
 
 # Tools
