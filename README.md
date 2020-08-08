@@ -1,5 +1,6 @@
 # 100 Days of Code
 
+[Test Link](#day-0)
 <!-- https://www.markdownguide.org/basic-syntax -->
 
 <!--
@@ -10,7 +11,7 @@
 ### Journal
 -->
 
-## Day 0:
+## <span id="day-0">Day 0</span>:
 
 ### Goal
 
