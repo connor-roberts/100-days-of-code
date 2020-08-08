@@ -30,7 +30,7 @@ A more thoughtful plan is coming, but for now, I'm jumping in the deep end.
 
 [Zappy by Zapier](https://zapier.com/zappy)
 
-### Live apps
+### App Hosting
 
 [Glitch](https://glitch.com/)
 
