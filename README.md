@@ -19,6 +19,22 @@ const test = function () {
 ```
 -->
 
+## Day 1:
+### tl;dr
+- Topic(s):
+- Time:
+### Today's Topic(s)
+### Key takeaways
+### Tomorrow
+### Journal
+```javascript
+const test = function () {
+  console.log("eh?")
+}
+```
+
+***
+
 ## Day 0
 
 ### Goal
