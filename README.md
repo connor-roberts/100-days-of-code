@@ -1,11 +1,14 @@
 # 100 Days of Code
 
-[Test Link](#day-0)
+- [Day 0](#day-0)
 <!-- https://www.markdownguide.org/basic-syntax -->
 
 <!--
 ## Day #:
-### Today's Topic
+### tl;dr
+- Topic(s):
+- Time:
+### Today's Topic(s)
 ### Key takeaways
 ### Tomorrow
 ### Journal
@@ -17,6 +20,20 @@
 
 Code for 100 days!
 
-I need to hold myself accountable. A more thoughtful plan is coming, but for now, I'm jumping in the deep end.
+A more thoughtful plan is coming, but for now, I'm jumping in the deep end.
 
 ***
+
+# Tools
+
+### Screenshots
+
+[Zappy by Zapier](https://zapier.com/zappy)
+
+### Live apps
+
+[Glitch](https://glitch.com/)
+
+### Sharing to Twitter
+
+[Zapier - Use my Zap!](https://zapier.com/shared/cbe12a740d6834e452513ff4064d4bdd90eb5029)
