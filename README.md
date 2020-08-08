@@ -11,7 +11,7 @@
 ### Journal
 -->
 
-## <span id="day-0">Day 0</span>:
+## Day 0
 
 ### Goal
 
