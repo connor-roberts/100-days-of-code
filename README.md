@@ -1,9 +1,21 @@
 # 100-days-of-code
 
-## Day 0:
+<!-- https://www.markdownguide.org/basic-syntax -->
 
 <!--
-Is this hidden?
+## Day #:
+### Today's Topic
+### Key takeaways
+### Tomorrow
+### Journal
 -->
 
-Testing
+## Day 0:
+
+### Goal
+
+Code for 100 days!
+
+I need to hold myself accountable. A more thoughtful plan is coming, but for now, I'm jumping in the deep end.
+
+***
