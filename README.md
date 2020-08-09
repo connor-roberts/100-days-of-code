@@ -1,5 +1,111 @@
 # 100 Days of Code
 
+## Day 2:
+
+### tl;dr
+- Topic(s): Digging into prototypal inheritance
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Yesterday, I felt like I had a solid grasp on using contructor functions to instantiate objects, but my understanding of prototypes and inheritance was lacking. Today, I dug into prototypal inheritance to make sure I fully understand what's going on.
+
+My recap below is mostly recapping this awesome video from Jonas Schmedtmann:
+- [JavaScript Prototypal Inheritance - Jonas Schmedtmann](https://youtu.be/3AKh0-PDsMw)
+
+Some of this was covered yesterday, but I'm revisiting the topic through the lens of today's learnings. 
+
+#### Prototype
+
+Today I learned that `prototype` is actually a property on all objects. In other words, every Javascript object has a `prototype` property.
+
+The `prototype` property is where we put the properties and methods that we want other objects to share. In this way, the `prototype` property is what makes inheritance possible.
+
+For example, the `tony` object below is an instance of Object, so it is able to draw from Object's prototype property.
+
+![simple Object instance](https://cdn.zappy.app/a21ed89e02060042d2f261fb0944f4e9.png)
+
+#### Inheritance
+
+Instances of an object inherit the object's prototype. 
+
+For example, below, the `dave` object is able to use the `getAgeSummary()` method because it inherits the `Person` constructor's prototype.
+
+```javascript
+// Constructor
+const Person = function (name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+};
+
+// Adding a method to the Constructor's prototype property
+Person.prototype.getAgeSummary = function () {
+    return `${this.name} is ${this.age} years old.`
+};
+
+// Instantiation
+const dave = new Person("Dave", 45, "accountant")
+
+console.log(dave.getAgeSummary())
+```
+
+This is the "Prototype Chain" at work. From Jonas Schmedtmann:
+
+![prototype chain](https://cdn.zappy.app/2a8905e5b9241fcd980066658d2a7bd5.png)
+
+When we try to use a method, JS will first look for the method on the object itself. If it does not find the method, it will check the `prototype` property of the Constructor (parent). If it fails to find it there, it will check the `prototype` property of the highest order constructor. Failing to find it there (`null`), JS will return `undefiled`.
+
+I think the most important thing to take away here is: a Constructor's `prototype` property is not the prototype for the constructor itself. It is the prototype for instances that are created through the constructor.
+
+For example, here, we see that dave's prototype and Person's prototype property reference the same object in memory:
+
+![same thing](https://cdn.zappy.app/2c16169fd83d53d17c8db5354184324a.png)
+
+#### Object.create()
+
+We can also use `Object.create()` to set very specific inheritance. 
+
+For example, here, without using a constructor...
+
+```javascript
+const mike = Object.create(Person.prototype, {
+    name: {value: "Mike"},
+    age: {value: 25},
+    job: {value: "pilot"}
+})
+
+console.log(mike)
+```
+
+... we're telling JS that the `mike` object should inherit from Person's prototype.
+
+![output](https://cdn.zappy.app/ae61839318f06afd518b185bd55fe47e.png)
+
+Difference between `Object.create()` and using a Constructor function:
+
+- `Object.create()`: Builds object that inherits directly from the one we pass into the first argument, allowing more specificity
+- Constructor function: Newly-created object inherits from constructor's prototype property
+
+### Key takeaways
+
+- Every JS object has a `prototype` property, making inheritance possible
+- The `prototype` property of a Constructor is NOT that constructor's prototype. It is the prototype of any instances that have been created from the Constructor
+- Prototype chain: When calling a method, JS will check the object itself for the method, then look upward through each parent object.
+
+### Tomorrow
+
+I won't have much time tomorrow. I'm planning to chip away at a grocery shopping checklist app that I've set up. It's super close to a todo app that I worked on in my course, but I think this will be a helpful way to revisit array methods and stay fresh on DOM manipulation as I pass through this more theoretical phase of OOP, classes, etc.
+
+### Journal
+I'm starting to second-guess the Udemy course that I've been taking. While the project-based nature has made it feel like I'm making quick progress, I feel like I'm missing out on the depth of theory that I want/need. I can re-create what I've done in the cours, but I don't fully understand what I'm doing. In some ways, I know that's not always necessary, but I feel like I learn best when I understand the context. 
+
+I'm debating on whether I should power through or switch courses. I'm leaning toward powering through and then trying a second course or supplementing with another course along the way. I'll iron this out as I work on a more concrete plan. 
+
+I really appreciate Jonas Schmedtmann's teaching style, so I might give their course(s) a shot. 
+
+***
+
 ## Day 1:
 
 ### tl;dr
