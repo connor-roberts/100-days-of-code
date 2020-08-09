@@ -3,7 +3,7 @@
 ## Day 1:
 
 ### tl;dr
-- Topic(s): OOO, primitives, objects, constructors, prototypes
+- Topic(s): OOP, primitives, objects, constructors, prototypes
 - Time: 1 hour
 
 ### Today's Topic(s)
