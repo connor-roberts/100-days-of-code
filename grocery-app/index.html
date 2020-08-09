@@ -1,1 +1,41 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Checklist</title>
+</head>
+<body>
+    <h1>Grocery Checklist</h1>
+    <input type="text" placeholder="Search items...">
+    <label for="hidePurchased">
+        <input type="checkbox" name="hidePurchased" id="hide-purchased">
+        Hide purchased
+    </label>
+    <select name="category" id="item-category">
+        <option>Produce</option>
+        <option>Frozen</option>
+        <option>Bakery</option>
+        <option>Aisle</option>
+    </select>
+    <div id="items">
+        <div>
+            <input type="checkbox">
+            <a href="#">Item one</a>
+            <button>x</button>
+        </div>
+        <div>
+            <input type="checkbox">
+            <a href="#">Item one</a>
+            <button>x</button>
+        </div>
+        <div>
+            <input type="checkbox">
+            <a href="#">Item one</a>
+            <button>x</button>
+        </div>
+    </div>
+    <button>Add Item</button>
+    <script type="text/javascript" src="grocery-app.js"></script>
+</body>
+</html>
