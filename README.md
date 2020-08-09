@@ -54,7 +54,7 @@ This is the "Prototype Chain" at work. From Jonas Schmedtmann:
 
 ![prototype chain](https://cdn.zappy.app/2a8905e5b9241fcd980066658d2a7bd5.png)
 
-When we try to use a method, JS will first look for the method on the object itself. If it does not find the method, it will check the `prototype` property of the Constructor (parent). If it fails to find it there, it will check the `prototype` property of the highest order constructor. Failing to find it there (`null`), JS will return `undefiled`.
+When we try to use a method, JS will first look for the method on the object itself. If it does not find the method, it will check the `prototype` property of the Constructor (parent). If it fails to find it there, it will check the `prototype` property of the highest order constructor. Failing to find it there (`null`), JS will return `undefined`.
 
 I think the most important thing to take away here is: a Constructor's `prototype` property is not the prototype for the constructor itself. It is the prototype for instances that are created through the constructor.
 
