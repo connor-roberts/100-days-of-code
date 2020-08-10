@@ -60,7 +60,7 @@ const renderItems = function(items, filters) {
         return searchMatch && hideMatch
     })
     // Clear div
-   document.querySelector("#items").innerHTML = ""
+    document.querySelector("#items").innerHTML = ""
     // Add items
-   generateItemList(filteredItems)
+    generateItemList(filteredItems)
 }
