@@ -7,35 +7,23 @@
 </head>
 <body>
     <h1>Grocery Checklist</h1>
-    <input type="text" placeholder="Search items...">
-    <label for="hidePurchased">
+    <input type="text" id="search-items" placeholder="Search items...">
+    <label for="hide-purchased">
         <input type="checkbox" name="hidePurchased" id="hide-purchased">
         Hide purchased
     </label>
-    <select name="category" id="item-category">
-        <option>Produce</option>
-        <option>Frozen</option>
-        <option>Bakery</option>
-        <option>Aisle</option>
-    </select>
     <div id="items">
-        <div>
-            <input type="checkbox">
-            <a href="#">Item one</a>
-            <button>x</button>
-        </div>
-        <div>
-            <input type="checkbox">
-            <a href="#">Item one</a>
-            <button>x</button>
-        </div>
-        <div>
-            <input type="checkbox">
-            <a href="#">Item one</a>
-            <button>x</button>
-        </div>
+        <!-- Render list -->
     </div>
-    <button>Add Item</button>
+    <form id="create-item">
+        <input id="new-item-text" name="newItemName" type="input" placeholder="Enter new item...">
+        <button id="add-item" type="submit">Add Item</button>
+    </form>
+    <!-- Scripts -->
+    <!-- UUID: https://github.com/uuidjs/uuid -->
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script type="text/javascript" src="grocery-functions.js"></script>
     <script type="text/javascript" src="grocery-app.js"></script>
 </body>
 </html>
+
