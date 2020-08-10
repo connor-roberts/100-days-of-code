@@ -44,9 +44,9 @@ const generateItemList = function(items) {
         itemWrapper.appendChild(removeButton)
         removeButton.addEventListener("click", function(e) {
             removeItem(item.id)
-
+            saveItems(items)
+            renderItems(items, filters)
         })
-
         // Append wrapped item
         document.querySelector("#items").appendChild(itemWrapper)
     })
