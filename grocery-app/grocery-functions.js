@@ -16,40 +16,36 @@ const removeItem = function (id) {
         return item.id === id
     })
     items.splice(index, 1)
-    console.log(items)
 }
 
-const generateItemList = function(items) {
-    items.forEach(function(item) {
-        // Div
-        const itemWrapper = document.createElement("div")
-        // Checkbox
-        const itemCheckbox = document.createElement("input")
-        itemCheckbox.setAttribute("type", "checkbox")
-        itemCheckbox.checked = item.purchased
-        itemWrapper.appendChild(itemCheckbox)
-        itemCheckbox.addEventListener("change", function(e) {
-            item.purchased = !item.purchased
-            saveItems(items)
-            renderItems(items, filters)
-        })
-        // Text
-        const newItem = document.createElement("a")
-        newItem.setAttribute("href", "#")
-        newItem.textContent = item.name
-        itemWrapper.appendChild(newItem)
-        // Button
-        const removeButton = document.createElement("button")
-        removeButton.textContent = "x"
-        itemWrapper.appendChild(removeButton)
-        removeButton.addEventListener("click", function(e) {
-            removeItem(item.id)
-            saveItems(items)
-            renderItems(items, filters)
-        })
-        // Append wrapped item
-        document.querySelector("#items").appendChild(itemWrapper)
+const generateItem = function(item) {
+    // Div
+    const itemWrapper = document.createElement("div")
+    // Checkbox
+    const itemCheckbox = document.createElement("input")
+    itemCheckbox.setAttribute("type", "checkbox")
+    itemCheckbox.checked = item.purchased
+    itemWrapper.appendChild(itemCheckbox)
+    itemCheckbox.addEventListener("change", function(e) {
+        item.purchased = !item.purchased
+        saveItems(items)
+        renderItems(items, filters)
     })
+    // Text
+    const newItem = document.createElement("a")
+    newItem.setAttribute("href", "#")
+    newItem.textContent = item.name
+    itemWrapper.appendChild(newItem)
+    // Button
+    const removeButton = document.createElement("button")
+    removeButton.textContent = "x"
+    itemWrapper.appendChild(removeButton)
+    removeButton.addEventListener("click", function(e) {
+        removeItem(item.id)
+        saveItems(items)
+        renderItems(items, filters)
+    })
+    return itemWrapper
 }
 
 const renderItems = function(items, filters) {
@@ -62,5 +58,7 @@ const renderItems = function(items, filters) {
     // Clear div
     document.querySelector("#items").innerHTML = ""
     // Add items
-    generateItemList(filteredItems)
+    filteredItems.forEach(function (item) {
+        document.querySelector("#items").appendChild(generateItem(item))
+    })
 }
