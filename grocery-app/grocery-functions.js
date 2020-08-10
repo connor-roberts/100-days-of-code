@@ -62,5 +62,5 @@ const renderItems = function(items, filters) {
     // Clear div
    document.querySelector("#items").innerHTML = ""
     // Add items
-    generateItemList(filteredItems)
+   generateItemList(filteredItems)
 }
