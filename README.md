@@ -306,7 +306,9 @@ I'm feeling pretty good! I'm kicking this off having already done some learning 
 
 ### Sharing to Twitter
 
-- [Zapier - Use my Zap!](https://zapier.com/shared/cbe12a740d6834e452513ff4064d4bdd90eb5029)
+[Zapier](https://zapier.com/)
+- [Use my Zap (actual)](https://zapier.com/shared/ce1ee3413c12c6c5cc8b8df7fe6a7662feca60f9)
+- [Use my Zap (simple)](https://zapier.com/shared/cbe12a740d6834e452513ff4064d4bdd90eb5029)
 
 ***
 
