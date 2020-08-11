@@ -7,6 +7,7 @@ const editItem = items.find(function(item) {
 }) 
 
 const nameField = document.querySelector("#item-name")
+const doneButton = document.querySelector("#done")
 
 nameField.value = editItem.name
 
@@ -14,3 +15,8 @@ nameField.addEventListener("input", function(e) {
     editItem.name = e.target.value
     saveItems(items)
 })
+
+doneButton.addEventListener("click", function(e) {
+    location.assign("index.html")
+})
+
