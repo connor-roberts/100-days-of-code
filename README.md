@@ -5,6 +5,37 @@
 
 ***
 
+## Day 3:
+
+### tl;dr
+- Topic(s): Array methods, DOM manipulation, flow control
+- Time: 45 minutes
+
+### Today's Topic(s)
+
+As predicted, I didn't have much time today. But after a two-day streak, I really wanted to keep the momentum going. 
+
+Last night I started a shopping list app, and today I kept plugging away. Today, I added a second page, meant for editing an existing note, passed and parsed a hash to use on the second page, and added a button to return to the main page using `location.assign()`.
+
+Here's the app in its current state:
+
+![today demo](https://cdn.zappy.app/0ee908a52173afa5652af8c7c2d911ce.gif)
+
+### Key takeaways
+
+- When submitting a form, you can get the field values by using `e.target.elements.*nameofelement*.value`
+- `.find()` returns an actual item while `.findIndex()` returns an index or -1.
+
+### Tomorrow
+
+Tomorrow I'm planning to get back to my Udemy course, working on OOP. I'd also like to add category radio buttons to the edit page of my grocery app.
+
+### Journal
+
+Today was definitely a test of my commitment. Without #100DaysOfCode I probably would have skipped today. What I appreciate about #100DaysOfCode is that you do what you can. I consider any amount of coding a win, and I found that, once I carved out a little time, I actually got more work in than expected. Excited to keep charging ahead!
+
+***
+
 ## Day 2:
 
 ### tl;dr
