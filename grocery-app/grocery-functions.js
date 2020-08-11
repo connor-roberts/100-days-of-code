@@ -33,7 +33,7 @@ const generateItem = function(item) {
     })
     // Text
     const newItem = document.createElement("a")
-    newItem.setAttribute("href", "#")
+    newItem.setAttribute("href", "edit.html#${item.id}")
     newItem.textContent = item.name
     itemWrapper.appendChild(newItem)
     // Button
