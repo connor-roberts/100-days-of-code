@@ -81,7 +81,7 @@ document.querySelector("#new-product").addEventListener("submit", function(e) {
 ```
 I'm planning to wire up some event listeners to use the following methods. I'm interested to see how this changes things compared to the grocery app.
 
-```javascrip
+```javascript
 Product.prototype.updatePrice = function(newPrice) {
     this.price = newPrice
 }
