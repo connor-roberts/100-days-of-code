@@ -9,7 +9,119 @@
 
 ## Day 4:
 
-Coming soon...
+### tl;dr
+- Topic(s): Tinkering with OOP, Git, GitHub
+- Time: 40 minutes
+### Today's Topic(s)
+
+#### Inventory app
+
+Today I tinkered around with OOP in little inventory tracking app. 
+
+- [Try it here](https://funny-zealous-panda.glitch.me/)
+
+The idea felt more unique than it actually ended up being. It's pretty similar to the grocery app I'm working on but with a few differences.
+
+First, it was fun trying to figure out how to constuct entire new table rows using form data. I'm not sure this is the most elegant solution, but it works:
+
+```javascript
+const generateRow = function(product) {
+    // Wrapper
+    const newRow = document.createElement("tr")
+    // Col_1
+    const col1 = document.createElement("td")
+    col1.textContent = product.name
+    // Col_2
+    const col2 = document.createElement("td")
+    col2.textContent = product.price
+    // Col_3
+    const col3 = document.createElement("td")
+    col3.textContent = product.quantity
+    // Append
+    newRow.appendChild(col1)
+    newRow.appendChild(col2)
+    newRow.appendChild(col3)
+    return newRow
+}
+
+const renderTable = function(products) {
+    products.forEach(function(product) {
+        document.querySelector("#table-body").appendChild(generateRow(product))
+    })
+}
+
+renderTable(products)
+```
+
+Second, the reason for trying this: I used a constructor function to make each product instead of an object literal. 
+
+```javascript
+const Product = function (name, price, quantity) {
+    this.name = name
+    this.price = price
+    this.quantity = quantity
+}
+```
+This feels like a clearner approach, but I'm not sure I realize the benefits quite yet. 
+
+```javascript
+document.querySelector("#new-product").addEventListener("submit", function(e) {
+    e.preventDefault()
+    let name = e.target.elements.productName.value
+    let price = e.target.elements.productPrice.value
+    let quantity = e.target.elements.productQuantity.value
+    const newProduct = new Product(name, price, quantity)
+    products.push(newProduct)
+    saveProducts(products)
+    renderTable(products)
+    e.target.elements.productName.value = ""
+    e.target.elements.productPrice.value = ""
+    e.target.elements.productQuantity.value = ""
+})
+```
+I'm planning to wire up some event listeners to use the following methods. I'm interested to see how this changes things compared to the grocery app.
+
+```javascrip
+Product.prototype.updatePrice = function(newPrice) {
+    this.price = newPrice
+}
+
+Product.prototype.updateQuantity = function(newQuantity) {
+    this.quantity = newQuantity
+}
+```
+
+#### Git & GitHub
+
+I also spent some time today learning about Git and GitHub. So far, I've only been using GitHub in the browser, but that does not feel sustainable. I know I'll need to get really comfortable with GitHub, so I'm trying to work it in now. 
+
+Sources:
+- [Git article](https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
+- [Git video](https://youtu.be/USjZcfj8yxE)
+- [GitHub article](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)
+- [GitHub video](https://youtu.be/nhNq2kIvi9s)
+
+### Key takeaways
+
+- DOM manipulation is hard. I don't know what I don't know, so I'm not sure if some things are really as repetitive as they seem or if I'm just not hip to the best practices yet. 
+- Git process: 
+
+1. `git status`
+2. `git add ...` filename or .
+3. `git commit -m "message text...`
+4. `git log`
+
+### Tomorrow
+
+Tomorrow I'm going to charge ahead on my Udemy course. I feel like I'm running the basics of OOP into the ground, and I need to keep moving.
+
+### Journal
+
+Right now, it's hard to balance learning and doing, partically because I feel like I either don't have ideas for things to build, or I don't have the toolset to apply what I know in really challenging ways. 
+
+This coming weekend, I'll spend some time mapping our a curriculum so I don't spend another 4 days on 1 topic. Maybe I'll try to work in coding challenges as well. 
+
+Otherwise, feeling good!
 
 ***
 
