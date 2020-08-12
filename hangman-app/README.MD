@@ -1,5 +1,5 @@
 # Hangman
 
-This is a definite work in progress
+This hangman app only has one work. More soon...
 
 [Try it here](https://marred-workable-moss.glitch.me/)
