@@ -4,6 +4,51 @@
 - [Day 2](#day-2)
 - [Day 3](#day-3)
 - [Day 4](#day-4)
+- [Day 5](#day-5)
+
+***
+
+## Day 5:
+
+### tl;dr
+
+- Topic(s): Word-guessing app
+- Time: 30 minutes
+
+### Today's Topic(s)
+
+I started working on a little word-guessing app:
+
+- [Try it here](https://marred-workable-moss.glitch.me/)
+
+Right now it only offers one word. When I learn how to use APIs, I'm going to plug in a random-word API call. 
+
+This didn't require much new info, but I did get to learn about the keypress event. 
+
+```javascript
+window.addEventListener("keypress", function (e) {
+    const guess = String.fromCharCode(e.charCode)
+    if (gameWord.remainingGuesses > 0) {
+        gameWord.makeGuess(guess)
+        renderWord(gameWord)
+        renderGuessesLeft(gameWord)
+    } else {
+        renderGameOver()
+    }
+})
+```
+
+### Key takeaways
+
+- To get a stringified key letter from the keypress event: `String.fromCharCode(e.charCode)`
+
+### Tomorrow
+
+Tomorrow, I'm hoping to get into Classes and closure. 
+
+### Journal
+
+Still finding it tricky to balance coding and learning with the little time I have, but I'm getting there.
 
 ***
 
