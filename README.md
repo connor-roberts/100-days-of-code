@@ -5,6 +5,92 @@
 - [Day 3](#day-3)
 - [Day 4](#day-4)
 - [Day 5](#day-5)
+- [Day 6](#day-6)
+
+***
+
+## Day 6:
+
+### tl;dr
+
+- Topic(s): Refactored hangman app, started Class syntax
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Today I refactored my hangman app:
+
+- [Try it here](https://funny-zealous-panda.glitch.me/)
+
+It still only offers 1 word, but it otherwise functions like you'd expect. It limits the number of guesses and displays a win/loss message accordingly.
+
+I also started learning about Classes. 
+
+Where we'd normally use a constructor function and define prototypes...
+
+```javascript
+// Constructor fuction 
+
+const Person = function (firstName, lastName, age, likes = []) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.likes = likes
+}
+
+// Prototype properties
+
+Person.prototype.getBio = function () {
+    let bio = `${this.firstName} is ${this.age} years old.`
+    this.likes.forEach((like) => {
+        bio += ` ${this.firstName} likes ${like}.`
+    })
+    return bio
+}
+
+Person.prototype.setName = function (fullName) {
+    const names = fullName.split(" ")
+    this.firstName = names[0]
+    this.lastName = names[1]
+}
+```
+
+...we can instead use Class syntax:
+
+```javascript
+class PersonClass {
+    constructor(name, age, likes) {
+        this.name = name
+        this.age = age
+        this.likes = likes
+    }
+    genBio() {
+        let bio = `${this.name} is ${this.age} years old.`
+        this.likes.forEach((like) => {
+            bio += ` ${this.name} likes ${like}.`
+        })
+        return bio
+        }
+    setName(fullName) {
+        const names = fullName.split(" ")
+        this.firstName = names[0]
+        this.lastName = names[1]
+    }
+}
+```
+
+### Key takeaways
+
+- Class syntax is "syntactic sugar." It's easier to read, but it functions the same.
+- the `.every()` array method. Takes a callback function, checks each item against the function, and returns a boolean. This was helpful in the hangman app as it offered an easy way to see if the player successfully guessed all the letters in the word.
+
+### Tomorrow
+
+Tomorrow I plan to leanr about subclasses, getters, and setters
+
+### Journal
+
+It's been a busy week, and the next few weeks will only get busier. #100DaysOfCode has been a great way to try to at least get something done every day. Hoping to use this as a way to stay fresh for the next few weeks until things calm down and I can really dig in.
 
 ***
 
