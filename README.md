@@ -109,7 +109,7 @@ The getters and setters on `Person` above are probably a better example. If we l
 class SubClass extends MainClass {
     constructor(sharedArg1, sharedArg2, uniqueArg) { // all args
         super(sharedArg1, sharedArg2)
-        this.uniqueArg - uniqueArg
+        this.uniqueArg = uniqueArg
     }
 }
 ```
