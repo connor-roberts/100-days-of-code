@@ -1,12 +1,10 @@
 # 100 Days of Code
 
-- [Day 1](#day-1)
-- [Day 2](#day-2)
-- [Day 3](#day-3)
-- [Day 4](#day-4)
-- [Day 5](#day-5)
-- [Day 6](#day-6)
-- [Day 7](#day-7)
+## Week 1
+
+Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
+[OOP, primitives, objects, constructors, prototypes](#day-1) | [Prototypal inheritance](#day-2) | [Array methods, DOM manipulation](#day-3) | [OOP, Git, GitHub](#day-4) | [Word-guessing app](#day-5) | [Refactoring, Class syntax](#day-6) | [Subclasses, getters & setters](#day-7)
 
 ***
 
