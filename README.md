@@ -6,6 +6,130 @@
 - [Day 4](#day-4)
 - [Day 5](#day-5)
 - [Day 6](#day-6)
+- [Day 7](#day-7)
+
+***
+
+## Day 7:
+
+### tl;dr
+- Topic(s): Subclasses, getters & setters
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Today I learned how you can create subclasses to extend the functionality of Classes:
+
+For example, below, we create `Employee` and `Student` subclasses that share properties and methods with the broader `Person` Class.
+
+```javascript
+class Person {
+    constructor(firstName, lastName, age, likes) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.age = age
+        this.likes = likes
+    }
+    getBio() {
+        let bio = `${this.firstName} is ${this.age} years old.`
+        this.likes.forEach((like) => {
+            bio += ` ${this.firstName} likes ${like}.`
+        })
+        return bio
+        }
+    set fullName(fullName) {
+        const names = fullName.split(" ")
+        this.firstName = names[0]
+        this.lastName = names[1]
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+// Subsclass - helps reduce duplicate code
+
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes) {
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    getBio() {
+        return `${this.fullName} is a ${this.position}.`
+    }
+    getYearsLeft() {
+        return 65 - this.age
+    }    
+}
+
+class Student extends Person {
+    constructor(firstName, lastName, age, likes, grade) {
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    updateGrade(points) {
+        this.grade += points
+    }
+    getBio() {
+        const status = this.grade >= 70 ? "passing" : "failing"
+        return `${this.grade}: ${this.firstName} is ${status} the class.`
+    }
+}
+```
+
+I also learned the basics of getters and setters. These methods allow you to control how data is stored and returned. They can be handy in sanitization.
+
+For example, the getter isn't doing much for below, but the setter allows us to call a property - the `.location` property here - AND trim whitespace, which we'd otherwise need to call a function or the `.trim()` method to do. It also allows us to add changes to the property to an array at the same time to track the property over time.
+
+```javascript
+const data = {
+    locations: [],
+    get location() {
+        return this._location
+    },
+    set location(value) {
+        this._location = value.trim()
+        this.locations.push(this._location)
+    }
+}
+
+data.location = "  Chicago   "
+data.location = "  New York"
+console.log(data)
+```
+
+The getters and setters on `Person` above are probably a better example. If we look at `fullName`, it's not actually a declared property, yet we can call it as such because we use the setter to split `firstName` and `lastName` and the getter to concatenate them. 
+
+### Key takeaways
+
+- Subclass consructor syntax:
+
+```javascript
+
+class SubClass extends MainClass {
+    constructor(sharedArg1, sharedArg2, uniqueArg) { // all args
+        super(sharedArg1, sharedArg2)
+        this.uniqueArg - uniqueArg
+    }
+}
+```
+
+- When using a setter, we can't save the modified value to the name of the setter property because that's already taken by the setter itself. Instead, we need to add it to a property with a different name.
+
+```javascript
+ set location(value) {
+        this._location = value.trim()
+        this.locations.push(this._location)
+    }
+ ```
+
+### Tomorrow
+
+Tomorrow I'm wrapping up a few coding challenges in my course, and then starting in on asynchronous Javascript.
+
+### Journal
+
+Nearing the end of the OOP section of my course, and feeling good about the context. Next up is what I'm really interested in: asynchronous JS! Feeling re-energized and ready to roll. A bit frustrated by not being able to dedicate more time right now. 
 
 ***
 
