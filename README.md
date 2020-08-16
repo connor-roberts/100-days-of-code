@@ -2,7 +2,7 @@
 
 Here, I'm documenting my #100DaysOfCode journey. This is more blog than curriculum, but you might find something interesting! 
 
-Find me on Twitter @connorrobots
+Things I'm using in this log (screenshots, hosting, etc.): [Tools](#tools)
 
 ### Week 1
 
