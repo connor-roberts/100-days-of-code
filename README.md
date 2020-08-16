@@ -89,10 +89,10 @@ document.querySelector("#capital-search").addEventListener("submit", (e) => {
 
 A few helpful resources:
 
-- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages](HTTP Messages)
-- [https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest](XMLHttpRequest)
-- [https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState](readystatechange event)
-- [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](Fetch API)
+- [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)
+- [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+- [readystatechange event](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState)
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 ### Key takeaways
 
