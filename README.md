@@ -1,10 +1,111 @@
 # 100 Days of Code
 
-## Week 1
+Here, I'm documenting my #100DaysOfCode journey. This is more blog than curriculum, but you might find something interesting! 
+
+Find me on Twitter @connorrobots
+
+### Week 1
 
 Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
 [OOP, primitives, objects, constructors, prototypes](#day-1) | [Prototypal inheritance](#day-2) | [Array methods, DOM manipulation](#day-3) | [OOP, Git, GitHub](#day-4) | [Word-guessing app](#day-5) | [Refactoring, Class syntax](#day-6) | [Subclasses, getters & setters](#day-7)
+
+### Week 2
+
+Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
+[OOP, primitives, objects, constructors, prototypes](#day-8) | ... | ... | ... | ... | ... | ...
+
+***
+
+## Day 8:
+
+### tl;dr
+
+- Topic(s): HTTP requests with `XMLHttpRequest`
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Today, I started learning how to make HTTP requests in Javascript using the XMLHttpRequest object. 
+
+To use it, we first instantiate the request using the XMLHttpRequest constructor:
+
+```javascript
+const request = new XMLHttpRequest()
+```
+Next, we open the request, using the method and the endpoint:
+
+```javascript
+request.open("GET", "https://restcountries.eu/rest/v2/all")
+```
+And then we send:
+
+```javascript
+request.send()
+```
+
+To work with the response's text, we can listen for the `readystatechange` event. This will fire for each of the 4 state changes, so we really only want to focus on state 4:
+
+```javascript
+request.addEventListener("readystatechange", (e) => {
+    if (e.target.readyState === 4 && e.target.status === 200) {
+        const data = JSON.parse(e.target.responseText)
+        console.log(data)
+    } else if (e.target.readyState === 4) {
+        console.log("An error has occurred")
+    }
+})
+```
+
+I used what I learned today to write the following, which takes the name of a country and makes an API call to get the country's capital:
+
+```javascript
+document.querySelector("#capital-search").addEventListener("submit", (e) => {
+    e.preventDefault()
+    const country = e.target.elements.searchCapital.value
+    
+    const request = new XMLHttpRequest()
+    request.open("GET", `https://restcountries.eu/rest/v2/name/${country}` )
+    request.send()
+    
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4 && e.target.status === 200) {
+            const data = JSON.parse(e.target.responseText)
+            const countryData = data[0]
+            document.querySelector("#capital-wrapper").innerHTML = ""
+            const capital = document.createElement("h4")
+            capital.textContent = countryData.capital
+            document.querySelector("#capital-wrapper").appendChild(capital)
+        } else {
+            document.querySelector("#capital-wrapper").innerHTML = ""
+            const error = document.createElement("h4")
+            error.textContent = "Hmmm, we couldn't find that country..."
+            document.querySelector("#capital-wrapper").appendChild(error)
+        }
+    })
+})
+```
+
+A few helpful resources:
+
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages](HTTP Messages)
+- [https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest](XMLHttpRequest)
+- [https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState](readystatechange event)
+- [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](Fetch API)
+
+### Key takeaways
+
+- We initialize the request with the `XMLHttpRequest()` constructor
+- The `readyState` property describes the state of the client during the request
+
+### Tomorrow
+
+- Tomorrow I won't have much time, but I'll keep digging into HTTP requests in JS.
+
+### Journal
+
+- Feeling good, just wish I had more time.
 
 ***
 
