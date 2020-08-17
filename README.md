@@ -50,9 +50,9 @@ const getPuzzle = () => {
     })
 }
 
+getPuzzle()
 console.log(word)
 
-getPuzzle()
 ```
 
 This logs `undefined` because `console.log(word)` runs before we receive the response; `word` is declared, but not defined in time to be usable. 
