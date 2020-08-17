@@ -337,9 +337,9 @@ Nearing the end of the OOP section of my course, and feeling good about the cont
 
 ### Today's Topic(s)
 
-Today I refactored my hangman app:
+Today I refactored my word-guessing app:
 
-- [Try it here](https://funny-zealous-panda.glitch.me/)
+- [Try it here](https://marred-workable-moss.glitch.me/)
 
 It still only offers 1 word, but it otherwise functions like you'd expect. It limits the number of guesses and displays a win/loss message accordingly.
 
