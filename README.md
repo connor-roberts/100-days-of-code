@@ -14,7 +14,101 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | ... | ... | ... | ... | ... | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | ... | ... | ... | ... | ...
+
+***
+
+## Day 9:
+
+### tl;dr
+
+- Topic(s): Callback abstration
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Today, I spent all my time trying to understand one example on callback abstraction in the context of an HTTP request. I think I get it now, and in retrospect, it's not very complicated, but for some reason I struggled.
+
+The goal of the lesson was to find a way to make the response of an HTTP request usable to the rest of the application. 
+
+Based on everything I'd learned up until now, the logical solution was to declare a global variable, `word`, and then assign a value within the event listener.
+
+But this WILL NOT WORK!
+
+```javascript
+let word
+const request = new XMLHttpRequest()
+
+const getPuzzle = () => {
+    request.open("GET", "http://puzzle.mead.io/puzzle?wordCount=2")
+    request.send()
+    
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4) {
+           word = e.target.responseText
+        }
+    })
+}
+
+console.log(word)
+
+getPuzzle()
+```
+
+This logs `undefined` because `console.log(word)` runs before we receive the response; `word` is declared, but not defined in time to be usable. 
+
+The solution here is to use callback abstraction. My understanding, as it applies here at least, is that that means we can ask our function to take a callback function that we can only call once the arguments are available.
+
+Below, our function takes a callback function. We don't run the callback function until the event listener is triggered, meaning we have needed arguments.
+
+```javascript
+const getPuzzle = (callback) => {
+    const request = new XMLHttpRequest()
+
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4 && e.target.status === 200) {
+            const data = JSON.parse(e.target.responseText)
+            callback(undefined, data.puzzle)
+        } else if (e.target.readyState === 4) {
+            callback(`${e.target.status} - ${e.target.statusText}`, undefined)
+        }
+    })
+
+    request.open("GET", "http://puzzle.mead.io/puzzle?wordCount=2")
+    request.send()
+}
+
+getPuzzle((error, puzzle) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(puzzle)
+    }
+})
+```
+
+The above also has some added flair for error handling.
+
+I suspect upcoming topics like `async` or `.then` will make this easier, but this felt important to understand regardless of the specific context.
+
+### Key takeaways
+
+- When defining a function that takes a callback, you can call the callback within the function by using the callback's name like `callback()`
+- Within the function that takes the callback, you don't actually say what the callback does. That is actually passed when calling the function. For example, below, the definition of `forEach()` has no idea what function will be passed, only that one WILL be passed.
+
+```javascript
+items.forEach((item) => {
+    console.log(item)
+}
+```
+
+### Tomorrow
+
+Tomorrow, I'm continuing on to the next lesson, building on today's and likely exploring some alternative approaches to the same problem.
+
+### Journal
+
+Feeling great about coding, just wishing I had more time right now. Things will calm down in a few weeks, but for now, I'm grateful for #100DaysOfCode because I feel compelled to keep the streak going when it would otherwise be easy to put this on the backburner. It's been really helpful for staying fresh while navigating this otherwise busy time.
 
 ***
 
