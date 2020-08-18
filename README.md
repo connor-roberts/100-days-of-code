@@ -29,7 +29,11 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 ### Today's Topic(s)
 
-...
+Didn't have much time today, so I just completed a challenge focused on yesterday's concept: callback abstraction. 
+
+Here, we define a function to take a callback function. Within the event listener, we can call the callback. 
+
+In this way, we ensure that we don't run certain code until we can be confident we've received the HTTP request's response. 
 
 ```javascript
 const getCountryDetails = (countryCode, callback) => {
@@ -51,7 +55,7 @@ const getCountryDetails = (countryCode, callback) => {
 }
 ```
 
-...
+Calling the above...
 
 ```javascript
 getCountryDetails("US", (error, countryName) => {
@@ -63,19 +67,47 @@ getCountryDetails("US", (error, countryName) => {
 })
 ```
 
-...
+For some reason, I really struggle to conceptualize the split in functionality between the function and the callback. I think it's because, when calling a function in which we pass a callback, the overall function call looks like a function definition, but missing some code. For that reason, I feel like they should be more aware of each other, but really they are indifferent and just point toward one another.
+
+This is a terrible example, and not in the context of async/sycn, but I think it helps me:
+
+```javascript
+const myFunction = (name, age, likes, callback) => {
+    const sentence = `${name} is ${age} years old and like ${likes}`
+    callback(sentence)
+}
+
+myFunction("Tony", 35, "pizza", (sentence) => {
+    console.log(sentence)
+})
+
+myFunction("Mark", 60, "football", (sentence) => {
+    console.log("My function has no concept of this sentence!!!")
+    console.log(sentence)
+})
+```
+
+`myFunction()` doesn't need to know what the callback will do. It simply executes it at the point at which it's called. This gives us flexibity to pass whatever callback function we want. 
+
+I also learned that `.open()` also takes a boolean argument, indicating whether the call should be asynchronous (`true`) or synchronous (`false`).
+
+```javascript
+request.open("GET", "https://restcountries.eu/rest/v2/all")
+```
+
+In theory, we could use this to solve the problem of code running before we get the response, but this stops the application, which is not a good experience.
 
 ### Key takeaways
 
-...
+- Hammering home yesterday's point: we don't need to include any of the specifics of the callback in the actual function definition; only that our function will take a callback. We simply need to know what arguments the callback will take when it's called. That way, we can pass those to the callback within the main function.
 
 ### Tomorrow
 
-...
+Tomorrow, I'll have more time. Yay! I'll dig into closures and hopefully get to `fetch()`.
 
 ### Journal
 
-...
+As enthusiastic as ever, just having trouble making time due to big life events right now. I'm considering any amount of coding a win right now, looking forward to having more time in a few weeks.
 
 ***
 
