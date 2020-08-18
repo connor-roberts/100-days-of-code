@@ -16,7 +16,7 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | ... | ... | ... | ... | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | ... | ... | ... | ...
 
 ***
 
@@ -24,7 +24,7 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 ### tl;dr
 
-- Topic(s): More callback abstraction
+- Topic(s): Callback abstraction challenge
 - Time: 30 minutes
 
 ### Today's Topic(s)
