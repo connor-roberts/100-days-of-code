@@ -20,6 +20,65 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 ***
 
+## Day 10:
+
+### tl;dr
+
+- Topic(s): More callback abstraction
+- Time: 30 minutes
+
+### Today's Topic(s)
+
+...
+
+```javascript
+const getCountryDetails = (countryCode, callback) => {
+    
+    const request = new XMLHttpRequest()
+
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4 && e.target.status === 200) {
+            const data = JSON.parse(e.target.responseText)
+            const country = data.find((country) => country.alpha2Code === countryCode)
+            callback(undefined, country.name)
+        } else if (e.target.readyState === 4) {
+            callback("Unable to fetch data", undefined)
+        }
+    })
+    
+    request.open("GET", "https://restcountries.eu/rest/v2/all")
+    request.send()
+}
+```
+
+...
+
+```javascript
+getCountryDetails("US", (error, countryName) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log(countryName)
+    }
+})
+```
+
+...
+
+### Key takeaways
+
+...
+
+### Tomorrow
+
+...
+
+### Journal
+
+...
+
+***
+
 ## Day 9:
 
 ### tl;dr
