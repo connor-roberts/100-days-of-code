@@ -34,7 +34,7 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Journal
 -->
 
-## Day #:
+## Day 10:
 
 ### tl;dr
 - Topic(s): Closures
@@ -54,7 +54,7 @@ Closure: a bundle including a function and the values of the variables on which 
 
 For example, below, we assign the return value of `myFunction()` to `myPrintMessage`. `myPrintMessage` references the same object in memory as `printMessage()`.
 
-We can call `myPrintMessage()` because the return value of `myFunction()` doesn't just include the function. It also includes the lexically scoped variable, `message`, on which `myPrintMessage` depends.
+We can call `myPrintMessage()` because the return value of `myFunction()` doesn't just include the function. It returns a record containing the lexical scope of the anonymous function - i.e. the function `myPrintMessage` and the variable, `message`, on which it depends.
 
 ```javascript
 const myFunction = () => {
@@ -68,7 +68,7 @@ const myFunction = () => {
 const myPrintMessage = myFunction()
 myPrintMessage()
 
-// output: "This is a message
+// "This is a message"
 ```
 
 ### Key takeaways
