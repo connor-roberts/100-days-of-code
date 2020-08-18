@@ -16,7 +16,68 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | ... | ... | ... | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | ... | ... | ...
+
+***
+
+<!-- TEMPLATE -->
+
+<!-- https://www.markdownguide.org/basic-syntax -->
+<!--
+## Day #:
+### tl;dr
+- Topic(s):
+- Time:
+### Today's Topic(s)
+### Key takeaways
+### Tomorrow
+### Journal
+-->
+
+## Day #:
+
+### tl;dr
+- Topic(s): Closures
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Today I started learning about Closures in Javascript. 
+
+To be honest, like callbacks, closures have wrinkled my brain a bit, but I think I'm getting there. I'm under no illusion that I'm mastering this right now, but the goal is really to just be aware of them so I can re-approach the topics in context when run into them.
+
+I really liked the way the following article describes closures (and more importantly, *why* we use them):
+
+- [Closures in JavaScript: Why Do We Need Them?](https://blog.bitsrc.io/closures-in-javascript-why-do-we-need-them-2097f5317daf)
+
+Closure: a bundle including a function and the values of the variables on which it depends. 
+
+For example, below, we assign the return value of `myFunction()` to `myPrintMessage`. `myPrintMessage` references the same object in memory as `printMessage()`.
+
+We can call `myPrintMessage()` because the return value of `myFunction()` doesn't just include the function. It also includes the lexically scoped variable, `message`, on which `myPrintMessage` depends.
+
+```javascript
+const myFunction = () => {
+    const message = "This is a message"
+    const printMessage = () => {
+        console.log(message)
+    }
+    return printMessage
+}
+
+const myPrintMessage = myFunction()
+myPrintMessage()
+
+// output: "This is a message
+```
+
+### Key takeaways
+
+...
+
+### Tomorrow
+
+Tomorrow, I'm starting in on Promises, which I believe will offer an alternative way to approach asynchrony (versus callbacks). 
 
 ***
 
@@ -975,21 +1036,3 @@ I'm feeling pretty good! I'm kicking this off having already done some learning 
 
 - [GitHub README/Markdown Formatting](https://docs.github.com/en/enterprise/2.20/user/github/writing-on-github/basic-writing-and-formatting-syntax#quoting-code)
 
-<!-- TEMPLATE -->
-
-<!-- https://www.markdownguide.org/basic-syntax -->
-<!--
-## Day #:
-### tl;dr
-- Topic(s):
-- Time:
-### Today's Topic(s)
-### Key takeaways
-### Tomorrow
-### Journal
-```javascript
-const test = function () {
-  console.log("eh?")
-}
-```
--->
