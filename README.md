@@ -54,6 +54,7 @@ I really liked the way the following article describes closures (and more import
 Closure: a bundle including a function and the values of the variables on which it depends. 
 
 - Short version (from Doglio's article above): "the function that is assigned (or returned as a value) and its associated scope."
+- An amazing analogy from [@segdeha](https://twitter.com/segdeha): "A crystal ball than can only see where it was made"
 
 For example, below, we assign the return value of `myFunction()` to `myPrintMessage`. `myPrintMessage` references the same object in memory as `printMessage()`.
 
