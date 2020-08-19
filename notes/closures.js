@@ -69,3 +69,29 @@ const tip20 = createTipper(0.2) // 20%
 console.log(tip15(100))
 console.log(tip20(100))
 
+// Private scope
+
+function MyObject(fn, ln) {
+    let fname = fn,
+        lname = ln
+        
+    const getFullName = () => {
+        return [fname, lname].join(" ")
+    }
+
+    const setFirstName = first => {
+        fname = first
+    }
+    const setLastName = last => {
+        lname = last
+    }
+
+    return {
+        getFullName,
+        setFirstName,
+        setLastName
+    }
+}
+
+const test = MyObject("Tony", "Danza")
+console.log(test.getFullName())
