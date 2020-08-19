@@ -34,9 +34,10 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Journal
 -->
 
-## Day 10:
+## Day 11:
 
 ### tl;dr
+
 - Topic(s): Closures
 - Time: 1 hour
 
@@ -44,7 +45,7 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 Today I started learning about Closures in Javascript. 
 
-To be honest, like callbacks, closures have wrinkled my brain a bit, but I think I'm getting there. I'm under no illusion that I'm mastering this right now, but the goal is really to just be aware of them so I can re-approach the topics in context when run into them.
+To be honest, like callbacks, closures have wrinkled my brain a bit, but I think I'm getting there. I'm under no illusion that I'm mastering this right now, but the goal is really to just be aware of them so I can re-approach the topic in context when run into them or a use-case.
 
 I really liked the way the following article describes closures (and more importantly, *why* we use them):
 
@@ -52,11 +53,11 @@ I really liked the way the following article describes closures (and more import
 
 Closure: a bundle including a function and the values of the variables on which it depends. 
 
-- Short (from Doglio's article above): "the function that is assigned (or returned as a value) and its associated scope"
+- Short version (from Doglio's article above): "the function that is assigned (or returned as a value) and its associated scope."
 
 For example, below, we assign the return value of `myFunction()` to `myPrintMessage`. `myPrintMessage` references the same object in memory as `printMessage()`.
 
-We can call `myPrintMessage()` because the return value of `myFunction()` doesn't just include the function. It returns a record containing the lexical scope of the anonymous function - i.e. the function `myPrintMessage` and the variable, `message`, on which it depends.
+We can call `myPrintMessage()` because the return value of `myFunction()` doesn't just include the function. It returns a record containing the lexical scope of the `printMessage` function - i.e. the function `myPrintMessage` AND the variable, `message`, on which it depends.
 
 ```javascript
 const myFunction = () => {
@@ -73,9 +74,88 @@ myPrintMessage()
 // "This is a message"
 ```
 
+##### A few use-cases:
+
+###### Simulating private scope for variables
+
+Below, we could have created an object, Counter, with a `count` property and several methods to increment/decrement/get the account. But this would have meant making the `count` property available. It could be accessed and changed by something like `myCounter.count = 4`. 
+
+Instead, we can use closure to return an object of several methods. Because the `count` variable is in the methods' scope, they can access and use its value. Below, because all methods share the same scope, they reference the same `count` value and can increment/decrement accordinly, not just +/- 1 from 0.
+
+```javascript
+const createCounter = () => {
+    let count = 0
+    return {
+        increment() {
+            count++
+        },
+        decrement() {
+            count--
+        },
+        getCount() {
+            return count
+        }
+    }
+}
+
+const myCounter = createCounter()
+myCounter.increment()
+myCounter.increment()
+myCounter.decrement()
+console.log(myCounter.getCount())
+// 1
+
+console.log(myCounter.count)
+// undefined
+```
+
+###### setTimeout()
+
+The `setTimeout()` function works via closure. The following is copy/pasted from the above article:
+
+```javascript
+function greetDelay(delay) {
+
+    let greet = "Hello world!"
+
+    setTimeout( _ => {
+        console.log(greet)
+    }, delay)
+
+    return "done!"
+}
+
+console.log(greetDelay(100))
+```
+
+The return statement executes before `setTimeout()` finishes, yet because `setTimeout()` is in scope with `greet`, it can still access it's value and execute.
+
+###### Constructing Functions
+
+We can return a function from a function, and then use it to create a new function that has access to the parent function's variables due to closure.
+
+For example, below, we set `tip15` to the return value of `createTipper`. In this way, we create a second function, and we can fix one of the arguments.
+
+```javascript
+const createTipper = (percent) => {
+    return (billAmount) => {
+        return percent * billAmount
+    }
+}
+
+const tip15 = createTipper(0.15) // 15%
+const tip20 = createTipper(0.2) // 20%
+
+console.log(tip15(100))
+console.log(tip20(100))
+```
+
+There are, of course, other use-cases, but they're a little beyong my scope (lol) right now.
+
 ### Key takeaways
 
-...
+- Closure: a function and its lexical scope
+- Closure gives us high control over variables
 
 ### Tomorrow
 
