@@ -35,13 +35,103 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 -->
 
 ## Day 12:
+
 ### tl;dr
+
 - Topic(s):
 - Time:
+
 ### Today's Topic(s)
+
+Promises
+
+```javascript
+// Callback approach
+
+const getDataCallback = (callback) => {
+    setTimeout(() => {
+        callback(undefined, "this is the CALLBACK data")
+    }, 2000)
+}
+
+getDataCallback((error, data) => {
+    if (error) {
+        console.log("Callback error")
+    } else {
+        console.log(data)
+    }
+})
+
+// Promise approach
+
+const getDataPromise = (data) => new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`This is the success data: ${data}`)
+        }, 2000)
+    })
+
+const myPromise = getDataPromise("Watermelon")
+
+myPromise.then((data) => {
+    console.log(data)
+}, (error) => {
+    console.log(error)
+})
+```
+...
+
+```javascript
+
+// Promise
+
+const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest()
+
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4 && e.target.status === 200) {
+            const data = JSON.parse(e.target.responseText)
+            resolve(data.puzzle)
+        } else if (e.target.readyState === 4) {
+            reject(`${e.target.status} - ${e.target.statusText}`)
+        }
+    })
+
+    request.open("GET", `http://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
+    request.send()
+})
+
+
+// ORIGINAL (Callback approach)
+
+const getPuzzle = (callback) => {
+    const request = new XMLHttpRequest()
+
+    request.addEventListener("readystatechange", (e) => {
+        if (e.target.readyState === 4 && e.target.status === 200) {
+            const data = JSON.parse(e.target.responseText)
+            callback(undefined, data.puzzle)
+        } else if (e.target.readyState === 4) {
+            callback(`${e.target.status} - ${e.target.statusText}`, undefined)
+        }
+    })
+
+    request.open("GET", "http://puzzle.mead.io/puzzle?wordCount=2")
+    request.send()
+}
+```
+...
+
 ### Key takeaways
+
+...
+
 ### Tomorrow
+
+...
+
 ### Journal
+
+...
 
 ***
 
