@@ -38,7 +38,7 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 ### tl;dr
 
-- Topic(s): Promises
+- Topic(s): Promises (barely)
 - Time: 20 minutes
 
 ### Today's Topic(s)
