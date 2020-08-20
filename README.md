@@ -109,7 +109,7 @@ Tomorrow I'm going to keep working on understanding and practicing Promises. I h
 
 I'd like to read this:
 
-- [https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1](Understanding promises in JavaScript)
+- [Understanding promises in JavaScript](https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1)
 
 ### Journal
 
