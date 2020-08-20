@@ -38,15 +38,27 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 
 ### tl;dr
 
-- Topic(s):
-- Time:
+- Topic(s): Promises
+- Time: 20 minutes
 
 ### Today's Topic(s)
 
-Promises
+Low on time today, so I really just dipped my toe into the topic of Promises. 
+
+What I took away: 
+
+- Promises offer another solution to deal with asynchronous events
+- The Promise constructor takes a function, and that function takes two parameters, `resolve` and `reject`, both of which end up being functions
+- A Promise is an object with several prototype methods like `.then()` and `.catch()`
+- `.then()` takes two callbacks - one for resolution and one for rejection - but I think `.catch` may be an alternative to the second
+- Promises help prevent "callback hell"
+
+Looking at two examples...
+
+Here's a callback approach, using `setTimeout()` to simulate an asynchronous event.
 
 ```javascript
-// Callback approach
+// CALLBACK
 
 const getDataCallback = (callback) => {
     setTimeout(() => {
@@ -61,8 +73,13 @@ getDataCallback((error, data) => {
         console.log(data)
     }
 })
+```
+The above works, but we need to pass the error and the data to the callback. And, the callback could be called multiple times.
 
-// Promise approach
+But by using a Promise...
+
+```javascript
+// PROMISE
 
 const getDataPromise = (data) => new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -78,60 +95,25 @@ myPromise.then((data) => {
     console.log(error)
 })
 ```
-...
-
-```javascript
-
-// Promise
-
-const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest()
-
-    request.addEventListener("readystatechange", (e) => {
-        if (e.target.readyState === 4 && e.target.status === 200) {
-            const data = JSON.parse(e.target.responseText)
-            resolve(data.puzzle)
-        } else if (e.target.readyState === 4) {
-            reject(`${e.target.status} - ${e.target.statusText}`)
-        }
-    })
-
-    request.open("GET", `http://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
-    request.send()
-})
-
-
-// ORIGINAL (Callback approach)
-
-const getPuzzle = (callback) => {
-    const request = new XMLHttpRequest()
-
-    request.addEventListener("readystatechange", (e) => {
-        if (e.target.readyState === 4 && e.target.status === 200) {
-            const data = JSON.parse(e.target.responseText)
-            callback(undefined, data.puzzle)
-        } else if (e.target.readyState === 4) {
-            callback(`${e.target.status} - ${e.target.statusText}`, undefined)
-        }
-    })
-
-    request.open("GET", "http://puzzle.mead.io/puzzle?wordCount=2")
-    request.send()
-}
-```
-...
+...we only need to pass one argument to each of the resolve/reject functions.
 
 ### Key takeaways
 
-...
+- Promises ensure that something will happen, good or bad, when an asynchronous event occurrs
+- A Promise is an object with properties and prototypes
+- Two parts here: creating the Promise and consuming the Promise
 
 ### Tomorrow
 
-...
+Tomorrow I'm going to keep working on understanding and practicing Promises. I hope to compare/contrast with callbacks and try to better understand where Closures come in. 
+
+I'd like to read this:
+
+- [https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1](Understanding promises in JavaScript)
 
 ### Journal
 
-...
+Feeling like I'm forgetting everything, but maybe also just tired. Today was very busy. I'm allowing myself to go slow right now because I don't have much time, and I know these are very important topics.
 
 ***
 
