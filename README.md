@@ -16,7 +16,7 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | ... | ... | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | ... | ...
 
 ***
 
@@ -33,6 +33,17 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Tomorrow
 ### Journal
 -->
+
+## Day 12:
+### tl;dr
+- Topic(s):
+- Time:
+### Today's Topic(s)
+### Key takeaways
+### Tomorrow
+### Journal
+
+***
 
 ## Day 11:
 
