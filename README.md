@@ -16,7 +16,7 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | ... | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | [Practice: Callbacks & Promises](#day-13) | ...
 
 ***
 
@@ -33,6 +33,195 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Tomorrow
 ### Journal
 -->
+
+## Day 13:
+
+### tl;dr
+
+- Topic(s): Practicing callbacks and promises
+- Time: 1 hour
+
+### Today's Topic(s)
+
+I was not feeling great about my ability to mentally distinguish between callbacks and promises...and to actually write them. So today, I just focused on getting some practice, comparing and contrasting the two to make sure the syntax sticks. 
+
+I stole this example from @developedbyed, then repeated it from memory, making modifications.
+
+Here, we look at the same situation three ways: synchronous, asynchronous using callbacks, asynchronous using promises
+
+#### Synchronous
+
+Below, we simulate an asynchronous event, like and API call, with `setTimeout()`. The following returns `undefined` for our functions because they're executed before `setTimeout()` completes.
+
+This is why we need asynchronous approaches: So we can accommodate events that are not instantaneous.
+
+```javascript
+// * SYNC
+
+console.log("start");
+
+function loginUser(email, password) {
+    setTimeout(() => {
+        return { userEmail: email };
+    }, 2000);
+}
+
+function getUserVideos(email) {
+    setTimeout(() => {
+        return ["Video 1", "Video 2", "Video 3"];
+    }, 5000);
+}
+
+function getVideoDetails(video) {
+    setTimeout(() => {
+        return { id: "12345", title: video};
+    }, 3000);
+}
+
+const loginMike = loginUser("mike@michael.com", 12345);
+console.log(loginMike);
+
+const mikesVideos = getUserVideos("mike@michael.com");
+console.log(mikesVideos);
+
+const videoOne = getVideoDetails("Video 1");
+console.log(videoOne);
+
+console.log("finish");
+
+/*
+
+Output:
+
+"start"
+undefined
+undefined
+undefined
+"finish"
+
+*/
+```
+
+#### Callbacks
+
+Below, we use callbacks to handle the asychronous events in our functions. This works because the callbacks are not executed until the end of the asynchronous events, so a value is being returned. 
+
+```javascript
+// * CALLBACKS
+
+console.log("start");
+
+function loginUser(email, password, callback) {
+    setTimeout(() => {
+        callback({ userEmail: email});
+    }, 2000);
+}
+
+function getUserVideos(email, callback) {
+    setTimeout(() => {
+        callback(["Video 1", "Video 2", "Video 3"]);
+    }, 2000);
+}
+
+function getVideoDetails(video, callback) {
+    setTimeout(() => {
+        callback({ id: 1234, title: video});
+    }, 2000)
+}
+
+loginUser("mike@michael.com", 12345, (user) => {
+    console.log(user);
+    getUserVideos("mike@michael.com", (videos) => {
+        console.log(videos);
+        getVideoDetails("Point Break 2", (details) => {
+            console.log(details);
+        });
+    });
+});
+
+console.log("finish");
+
+/*
+
+Output:
+
+"start"
+"finish"
+{ userEmail: "mike@michael.com" }
+[ "Video 1", "Video 2", "Video 3" ]
+{ id: 1234, title: "Video 1" }
+
+*/
+```
+
+We also start to see "callback hell" where callbacks are nesting within callbacks within callbacks. 
+
+#### Promises
+
+Here, we use Promises as an alternative to callbacks. We're only using `resolve` for the sake of simplicity.
+
+```javascript
+// * PROMISES
+
+console.log("start")
+
+function loginUser(email, password) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({ userEmail: email });
+        }, 2000);
+    });
+}
+
+function getUserVideos(email) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(["Video 1", "Video 2", "Video 3"]);
+        }, 2000);
+    });
+}
+
+function getVideoDetails(video) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({id: 123, title: video});
+        }, 2000);
+    });
+}
+
+loginUser("mike@michael.com", 1234)
+    .then(user => getUserVideos(user.userEmail))
+    .then(videos => console.log(videos[0]))
+    // if getVideoDetails was able to do anything with the video title, we could continue the chain
+
+console.log("finish")
+
+/*
+
+Output:
+
+"start"
+"finish"
+"Video 1"
+
+*/
+```
+
+The main benefit of this approach it that it makes chaining callbacks a lot easier to write and understand. Each function returns a promise, which can be used in the next function, on down the line.
+
+### Key takeaways
+
+No new takeaways today. Today was really just about building mental models.
+
+### Tomorrow
+
+Tomorrow I'm going to practice these some more, focusing on chaining in particular. I'd like to learn about `fetch()` to see if that might be easier to work with than `XMLHttpRequest()` for trying these out with API calls.
+
+### Journal
+
+I was really bummed this morning, feeling like I just couldn't get it. I'm still not rock-solid on these topics, but I think today was a good exercise of recognizing when to learn and when to practice.
+
+***
 
 ## Day 12:
 
