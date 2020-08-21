@@ -149,7 +149,7 @@ Output:
 "finish"
 { userEmail: "mike@michael.com" }
 [ "Video 1", "Video 2", "Video 3" ]
-{ id: 1234, title: "Video 1" }
+{ id: 1234, title: "Point Break 2" }
 
 */
 ```
