@@ -16,7 +16,7 @@ Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7
 
 Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | [Practice: Callbacks & Promises](#day-13) | ...
+[HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | [Practice: Callbacks & Promises](#day-13) | [Promise Chaining, Async/Await](#day-14)
 
 ***
 
@@ -33,6 +33,171 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Tomorrow
 ### Journal
 -->
+
+## Day 14:
+
+### tl;dr
+
+- Topic(s): Callbacks, promises, promise chaining, async/await
+- Time: 1 hour
+
+### Today's Topic(s)
+
+Like yesterday, today I mainly practiced working with callbacks and promises. I had two main goals:
+
+- Use each approach with more complex functions (beyond just logging to the console)
+- Chain the function calls - with callbacks, promises, and async/await
+
+Here is our data:
+
+```javascript
+// * DATA
+
+const users = [{
+    email: "mike@mike.com",
+    userID: 1234
+},{
+    email: "dave@dave.com",
+    userID: 5678
+},{
+    email: "tony@tony.com",
+    userID: 9012
+}]
+
+const posts = [{
+    userID: 1234,
+    posts: ["Post 1", "Post 2", "Post 3"]
+},{
+    userID: 5678,
+    posts: ["Post 4", "Post 5"]
+},{
+    userID: 9012,
+    posts: ["Post 6"]
+}]
+```
+
+First up: Callbacks
+
+```javascript
+function getUserID(email, callback) {
+    setTimeout(() => {
+        callback(email)
+    }, 2000)
+}
+
+function getUserPosts(id, callback) {
+    setTimeout(() => {
+        callback(id)
+    }, 2000)
+}
+
+function getNumberOfPosts(posts, callback) {
+    setTimeout(() => {
+        callback(posts)
+    }, 2000)
+}
+
+// CALL
+
+getUserID("mike@mike.com", (email) => {
+    const userObj = users.find((user) => {
+        return user.email === email
+    })
+    console.log(userObj.userID)
+    getUserPosts(userObj.userID, (id) => {
+        const userPosts = posts.find((post) => {
+            return post.userID === id
+        })
+        console.log(userPosts.posts)
+        getNumberOfPosts(userPosts, (posts) => {
+            console.log(`Post count: ${userPosts.posts.length}`)
+        })
+    })
+})
+```
+
+My callback functions are pretty simple and yet this still becomes pretty intimidating to look at.
+
+Next up: Promises
+
+```javascript
+function getUserID(email) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const userObj = users.find((user) => {
+                return user.email === email
+            })
+            resolve(userObj)
+        }, 2000)
+    })
+}
+
+function getUserPosts(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const userPosts = posts.find((post) => {
+                return post.userID === id
+            })
+            resolve(userPosts)
+        }, 2000)
+    })
+}
+
+function getNumberOfPosts(userPosts) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const postCount = userPosts.posts.length
+            resolve(postCount)
+        }, 2000)
+    })
+}
+```
+
+Now, we can either call the first function and chain the promises...
+
+```javascript
+getUserID("tony@tony.com")
+    .then((userObj) => getUserPosts(userObj.userID))
+    .then((userPosts) => getNumberOfPosts(userPosts))
+    .then((postCount) => console.log(postCount))
+ ```
+ 
+ ...or use async/await to wrap our calls in a new asynchronous function:
+ 
+ ```javascript
+ async function countPosts(email) {
+    const userObj = await getUserID(email)
+    const userPosts = await getUserPosts(userObj.userID)
+    const postCount = await getNumberOfPosts(userPosts)
+    console.log(postCount)
+}
+
+// CALL
+
+countPosts("tony@tony.com")
+```
+
+I've just dipped my toe into async/await, so I need to more thoroughly read the docs to determine if this wrapper function is the standard approach.
+
+Personally, I like the `.then()` syntax, but I see how async/await is more composable/reusable.
+
+Where am I still struggling?
+
+- Passing a returned promise into the next function. It makes sense, but I haven't yet consciously figured out how strict the variable names are. I need to experiment as it's still difficult to work these mappings out in my head.
+
+### Key takeaways
+
+- To use async/await, we can create a new parent function and chain our calls.
+
+### Tomorrow
+
+Tomorrow, I will not have much time, and likewise for the following...um...week. I think my single focus will be to get familiar enough with `fetch()` to start practicing the above with actual API calls.
+
+### Journal
+
+As motivated as ever, just trying to get through this busy period. Let's go!
+
+***
 
 ## Day 13:
 
