@@ -77,6 +77,10 @@ async function getImage() {
 getImage()
 ```
 
+Result:
+
+![page](https://cdn.zappy.app/33342dfdc171b16b9c7a28337819d8ea.png)
+
 `fetch()` takes a single argument - the location of the resource - and returns a promise, which resolves to a response.
 
 Using that response is where I'm struggling. I understand that we can use async/await or `.then() ` to work with it, but I'm struggling to understand formatting and accessing properties. I need to read the full Fetch documentation, explore the Body mixin...and read about what mixins are...
