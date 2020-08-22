@@ -18,6 +18,10 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
 [HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | [Practice: Callbacks & Promises](#day-13) | [Promise Chaining, Async/Await](#day-14)
 
+Day 15 | Day 16 | Day 17 | Day 18 | Day 19 | Day 20 | Day 21
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
+[Fetch](#day-15) | ... | ... | ... | ... | ... | ...
+
 ***
 
 <!-- TEMPLATE -->
@@ -33,6 +37,66 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ### Tomorrow
 ### Journal
 -->
+
+## Day 15:
+
+### tl;dr
+
+- Topic(s): Fetch API
+- Time: 30 minutes
+
+### Today's Topic(s)
+
+Today's post is more bookmark than log.
+
+I found a few minutes to start playing with the Fetch API. Below are two examples, retrieving text and an image and adding them to a page.
+
+```javascsript
+// TEXT
+
+async function getWord() {
+    const response = await fetch("http://puzzle.mead.io/puzzle")
+    const data = await response.text()
+    const wordObj = JSON.parse(data)
+    document.getElementById("the-paragraph").textContent = wordObj.puzzle
+}
+
+getWord()
+
+// IMAGE
+
+async function getImage() {
+    const response = await fetch("https://picsum.photos/id/237/200/300")
+    const data = await response.blob()
+    const imgURL = URL.createObjectURL(data)
+    document.getElementById("the-image").src = imgURL
+}
+
+getImage()
+```
+
+`fetch()` takes a single argument - the location of the resource - and returns a promise, which resolves to a response.
+
+Using that response is where I'm struggling. I understand that we can use async/await or `.then() ` to work with it, but I'm struggling to understand formatting and accessing properties. I need to read the full Fetch documentation, explore the Body mixin...and read about what mixins are...
+
+- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Mixin](https://developer.mozilla.org/en-US/docs/Glossary/Mixin)
+- [Body](https://developer.mozilla.org/en-US/docs/Web/API/Body)
+
+### Key takeaways
+
+- Fetch returns a promise.
+- We can use async/await or 
+
+### Tomorrow
+
+- I plan to read the above docs when I have time today, so tomorrow I plan to practice working with Fetch to retrieve different types of data.
+
+### Journal
+
+I work with API responses pretty much all day, so it's fun to be able to start understanding the mechanics.
+
+***
 
 ## Day 14:
 
