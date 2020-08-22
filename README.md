@@ -53,7 +53,7 @@ Today's post is more bookmark than log.
 
 I found a few minutes to start playing with the Fetch API. Below are two examples, retrieving text and an image and adding them to a page.
 
-```javascsript
+```javascript
 // TEXT
 
 async function getWord() {
