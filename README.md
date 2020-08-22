@@ -51,7 +51,7 @@ Day 15 | Day 16 | Day 17 | Day 18 | Day 19 | Day 20 | Day 21
 
 Today's post is more bookmark than log.
 
-I found a few minutes to start playing with the Fetch API. Below are two examples, retrieving text and an image and adding them to a page.
+I found a few minutes to start playing with the Fetch API. Below are two examples, retrieving a random phrase and a static image, and then adding them to a page.
 
 ```javascript
 // TEXT
