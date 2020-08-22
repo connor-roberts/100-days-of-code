@@ -18,6 +18,8 @@ Day 8 | Day 9 | Day 10 | Day 11 | Day 12 | Day 13 | Day 14
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
 [HTTP requests with XMLHttpRequest](#day-8) | [Callback abstraction](#day-9) | [More callback abstraction](#day-10) | [Closures](#day-11) | [Promises](#day-12) | [Practice: Callbacks & Promises](#day-13) | [Promise Chaining, Async/Await](#day-14)
 
+### Week 3
+
 Day 15 | Day 16 | Day 17 | Day 18 | Day 19 | Day 20 | Day 21
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
 [Fetch](#day-15) | ... | ... | ... | ... | ... | ...
