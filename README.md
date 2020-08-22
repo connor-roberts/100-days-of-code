@@ -48,6 +48,8 @@ Like yesterday, today I mainly practiced working with callbacks and promises. I 
 - Use each approach with more complex functions (beyond just logging to the console)
 - Chain the function calls - with callbacks, promises, and async/await
 
+In this not-very-good example, we're using an email address to search for a user. Then, we're using the user's ID number to search for posts that a user has written. Then we're returning the number of posts by that user.
+
 Here is our data:
 
 ```javascript
