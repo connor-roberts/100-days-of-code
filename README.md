@@ -92,7 +92,7 @@ Using that response is where I'm struggling. I understand that we can use async/
 ### Key takeaways
 
 - Fetch returns a promise.
-- We can use async/await or 
+- We can use async/await or `.then()` to work with the response
 
 ### Tomorrow
 
